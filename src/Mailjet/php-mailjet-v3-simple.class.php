@@ -271,6 +271,10 @@ class Mailjet
         {
             $this->call_url = $this->makeUrlFromFilter('REST', 'contactslist', $params['ID'], $resource);       // Was $this->call_url = $this->apiUrl."/REST/contactslist/". $contactslist_id . "/".strtolower($action);
         }
+        else if ($resource == "newsletter" && array_key_exists('ID', $params) && !empty($params['ID']))
+        {
+        	 $this->call_url = $this->apiUrl . '/REST/' . $resource . '/'. $params['ID'];
+        }
         else {
             $this->call_url = $this->apiUrl . '/REST/' . $resource;
         }
